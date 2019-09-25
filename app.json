@@ -1,6 +1,6 @@
 {
   "id": "com.roco.pipup",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "compatibility": ">=1.5.0",
   "sdk": 2,
   "name": {
@@ -27,11 +27,11 @@
     "small": "/assets/images/small.png"
   },
   "author": {
-    "name": "Rob Groenendijk",
-    "email": "rogro82@gmail.com"
+    "name": "Roco Damelshe",
+    "email": "deloodgieter@schotanus.net"
   },
   "contributors": {
-		"developers": [{"name": "Rogro82","email": "rogro82@gmail.com"}]
+		"developers": [{"name": "Rogro82", "email": "rogro82@gmail.com"}]
   },
     	"contributing": {
 		"donate": { "paypal": { "username": "rocodamelshe" } }
