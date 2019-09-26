@@ -11,10 +11,3 @@ https://play.google.com/apps/testing/nl.rogro82.pipup
 
 In case of any `issue` with the Android application please post them at the correct repository:  
 https://github.com/rogro82/PiPup/issues
-
-## Donate
-If you like the app, consider buying me a beer!  
-[![Paypal donate][pp-donate-image]][pp-donate-link]
-
-[pp-donate-link]: https://www.paypal.me/rocodamelshe
-[pp-donate-image]: https://www.paypalobjects.com/webstatic/en_US/i/btn/png/btn_donate_92x26.png
