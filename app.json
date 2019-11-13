@@ -1,14 +1,15 @@
 {
   "id": "com.roco.pipup",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "compatibility": ">=1.5.0",
   "sdk": 2,
+  "brandColor": "#5599BB",
   "name": {
     "en": "PiPup"
   },
   "description": {
     "nl": "Verstuur notificaties naar PiPup op Android TV",
-    "en": "Send notifications to PiPup on Android TV"
+    "en": "Integration with PiPup for Android TV"
   },
   "category": [
     "tools"
@@ -36,7 +37,11 @@
     	"contributing": {
 		"donate": { "paypal": { "username": "rocodamelshe" } }
 	},
+      "bugs": {
+    "url": "https://github.com/Rocodamelshe/com.roco.pipup/issues"
+  },
     "homeyCommunityTopicId": 18498,
+    "source": "https://github.com/Rocodamelshe/com.roco.pipup",
   "flow": {
     "actions": [
       {
