@@ -162,13 +162,6 @@
                 }
               },
               {
-                "id": "3600",
-                "label": {
-                  "en": "1 hour",
-                  "nl": "1 uur"
-                }
-              },
-              {
                 "id": "0",
                 "label": {
                   "en": "Until manually cancelled",
@@ -459,13 +452,6 @@
                 "label": {
                   "en": "30 minutes",
                   "nl": "30 minuten"
-                }
-              },
-              {
-                "id": "3600",
-                "label": {
-                  "en": "1 hour",
-                  "nl": "1 uur"
                 }
               },
               {
@@ -786,13 +772,6 @@
                 }
               },
               {
-                "id": "3600",
-                "label": {
-                  "en": "1 hour",
-                  "nl": "1 uur"
-                }
-              },
-              {
                 "id": "0",
                 "label": {
                   "en": "Until manually cancelled",
@@ -1093,13 +1072,6 @@
                 "label": {
                   "en": "30 minutes",
                   "nl": "30 minuten"
-                }
-              },
-              {
-                "id": "3600",
-                "label": {
-                  "en": "1 hour",
-                  "nl": "1 uur"
                 }
               },
               {
@@ -1420,13 +1392,6 @@
                 "label": {
                   "en": "30 minutes",
                   "nl": "30 minuten"
-                }
-              },
-              {
-                "id": "3600",
-                "label": {
-                  "en": "1 hour",
-                  "nl": "1 uur"
                 }
               },
               {
