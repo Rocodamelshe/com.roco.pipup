@@ -6,15 +6,12 @@ _Note: First install the application "PiPup" on your Android TV._
 
 __The `Android TV` application is currently in a `public beta`__
 
+
 To enter the `beta` and install the application on your device go to:  
 https://play.google.com/apps/testing/nl.rogro82.pipup
 
+
+__Important: after installation / updating it is currently adviced to restart your TV and open the application once to make sure the background-service is running__
+
 In case of any `issue` with the Android application please post them at the correct repository:  
 https://github.com/rogro82/PiPup/issues
-
-## Donate
-If you like the app, consider buying me a beer!  
-[![Paypal donate][pp-donate-image]][pp-donate-link]
-
-[pp-donate-link]: https://www.paypal.me/rocodamelshe
-[pp-donate-image]: https://www.paypalobjects.com/webstatic/en_US/i/btn/png/btn_donate_92x26.png

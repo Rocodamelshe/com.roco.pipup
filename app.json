@@ -1,14 +1,15 @@
 {
   "id": "com.roco.pipup",
-  "version": "1.0.2",
+  "version": "1.0.5",
   "compatibility": ">=1.5.0",
   "sdk": 2,
+  "brandColor": "#5599BB",
   "name": {
     "en": "PiPup"
   },
   "description": {
     "nl": "Verstuur notificaties naar PiPup op Android TV",
-    "en": "Send notifications to PiPup on Android TV"
+    "en": "Integration with PiPup for Android TV"
   },
   "category": [
     "tools"
@@ -27,7 +28,7 @@
     "small": "/assets/images/small.png"
   },
   "author": {
-    "name": "Roco Damelshe",
+    "name": "Rocodamelshe",
     "email": "deloodgieter@schotanus.net"
   },
   "contributors": {
@@ -36,6 +37,11 @@
     	"contributing": {
 		"donate": { "paypal": { "username": "rocodamelshe" } }
 	},
+      "bugs": {
+    "url": "https://github.com/Rocodamelshe/com.roco.pipup/issues"
+  },
+    "homeyCommunityTopicId": 18498,
+    "source": "https://github.com/Rocodamelshe/com.roco.pipup",
   "flow": {
     "actions": [
       {
@@ -146,13 +152,6 @@
                 "label": {
                   "en": "30 minutes",
                   "nl": "30 minuten"
-                }
-              },
-              {
-                "id": "3600",
-                "label": {
-                  "en": "1 hour",
-                  "nl": "1 uur"
                 }
               },
               {
@@ -453,13 +452,6 @@
                 "label": {
                   "en": "30 minutes",
                   "nl": "30 minuten"
-                }
-              },
-              {
-                "id": "3600",
-                "label": {
-                  "en": "1 hour",
-                  "nl": "1 uur"
                 }
               },
               {
@@ -780,13 +772,6 @@
                 }
               },
               {
-                "id": "3600",
-                "label": {
-                  "en": "1 hour",
-                  "nl": "1 uur"
-                }
-              },
-              {
                 "id": "0",
                 "label": {
                   "en": "Until manually cancelled",
@@ -1087,13 +1072,6 @@
                 "label": {
                   "en": "30 minutes",
                   "nl": "30 minuten"
-                }
-              },
-              {
-                "id": "3600",
-                "label": {
-                  "en": "1 hour",
-                  "nl": "1 uur"
                 }
               },
               {
@@ -1414,13 +1392,6 @@
                 "label": {
                   "en": "30 minutes",
                   "nl": "30 minuten"
-                }
-              },
-              {
-                "id": "3600",
-                "label": {
-                  "en": "1 hour",
-                  "nl": "1 uur"
                 }
               },
               {
