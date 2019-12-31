@@ -1,8 +1,10 @@
 'use strict';
 
 const Homey = require('homey');
-const request = require('request');
-const fs = require('fs');
+const {PassThrough} = require('stream');
+const fetch = require('node-fetch');
+const FormData = require('form-data');
+const toArray = require('stream-to-array')
 
 class PiPupApp extends Homey.App {
 
@@ -38,102 +40,133 @@ class PiPupApp extends Homey.App {
 	}
 
 	async _onFlowActionSendNotificationJson(args) {
+		console.log("send json flow action...")
 
-		let address = `http://${args.host}:7979/notify`;
-		let jsonData = {
-			duration: args.time,
-			position: args.position,
-			title: args.title.trim(),
-			titleSize: args.titleSize,
-			titleColor: args.titleColor,
-			message: args.message.trim(),
-			messageSize: args.messageSize,
-			messageColor: args.messageColor,
-			backgroundColor: args.backgroundColor
-		};
+		try {
+			let address = `http://${args.host}:7979/notify`;
+			let jsonData = {
+				duration: args.time,
+				position: args.position,
+				title: args.title.trim(),
+				titleSize: args.titleSize,
+				titleColor: args.titleColor,
+				message: args.message.trim(),
+				messageSize: args.messageSize,
+				messageColor: args.messageColor,
+				backgroundColor: args.backgroundColor
+			};
 
-		if(args.mediaImageUri) {
-			jsonData["media"] = {
-				"image": {
-					"uri": args.mediaImageUri,
-					"width": args.mediaImageWidth
+			if(args.mediaImageUri) {
+				jsonData["media"] = {
+					"image": {
+						"uri": args.mediaImageUri,
+						"width": args.mediaImageWidth
+					}
 				}
 			}
-		}
 
-		if(args.mediaVideoUri) {
-			jsonData["media"] = {
-				"video": {
-					"uri": args.mediaVideoUri,
-					"width": args.mediaVideoWidth
+			if(args.mediaVideoUri) {
+				jsonData["media"] = {
+					"video": {
+						"uri": args.mediaVideoUri,
+						"width": args.mediaVideoWidth
+					}
 				}
 			}
-		}
 
-		if(args.mediaWebUri) {
-			jsonData["media"] = {
-				"web": {
-					"uri": args.mediaWebUri,
-					"width": args.mediaWebWidth,
-					"height": args.mediaWebHeight
+			if(args.mediaWebUri) {
+				jsonData["media"] = {
+					"web": {
+						"uri": args.mediaWebUri,
+						"width": args.mediaWebWidth,
+						"height": args.mediaWebHeight
+					}
 				}
 			}
+
+			console.log('sending notification to', address);
+
+
+			let response = await fetch(address, {
+				method: 'POST',
+				body: JSON.stringify(jsonData),
+				headers: {
+					'Content-Type': 'application/json'				
+				}
+			});
+
+			let responseText = await response.text();
+			console.log(`response = ${responseText}`)
+
+			return response.ok;
+
+		} catch(e) {
+			console.error(e);
+			return false;
 		}
-
-		console.log(jsonData);
-		console.log('sending notification to', address);
-
-		request.post({ url: address, json: jsonData }, function optionalCallback(err, httpResponse, body) {
-			if (err) {
-				console.error('notification failed:', err);
-				return false;
-			}
-
-			console.log('notification success');
-			return true;
-		});
 	}
 
 	async _onFlowActionSendNotificationMultipart(args) {
+		console.log("send multipart flow action...")
 
-		let address = `http://${args.host}:7979/notify`;
-		let formData = {
-			imageWidth: args.imageWidth,
-			duration: args.time,
-			position: args.position,
-			title: args.title.trim(),
-			titleSize: args.titleSize,
-			titleColor: args.titleColor,
-			message: args.message.trim(),
-			messageSize: args.messageSize,
-			messageColor: args.messageColor,
-			backgroundColor: args.backgroundColor
-		};
+		try {
 
-		if (args.droptoken != null) {
-			let stream = await args.droptoken.getStream();
-			formData["image"] = {
-				value: stream,
-				options: {
-					knownLength: stream.contentLength
-				}
+			let address = `http://${args.host}:7979/notify`;
+			let formData = {
+				imageWidth: args.imageWidth,
+				duration: args.time,
+				position: args.position,
+				title: args.title.trim(),
+				titleSize: args.titleSize,
+				titleColor: args.titleColor,
+				message: args.message.trim(),
+				messageSize: args.messageSize,
+				messageColor: args.messageColor,
+				backgroundColor: args.backgroundColor
 			};
-		}
 
-		console.log(formData);
-		console.log('sending notification to', address);
 
-		request.post({ url: address, formData: formData }, function optionalCallback(err, httpResponse, body) {
-			if (err) {
-				console.error('notification failed:', err);
-				return false;
+			const form = new FormData();
+			for(let [key, value] of Object.entries(formData)) {
+				form.append(key, value);
 			}
 
-			console.log('notification success');
-			return true;
-		});
-	}
+			if(args.droptoken != null) {
+				const stream = await args.droptoken.getStream();
+				// const buffer = await args.droptoken.getBuffer();
 
+				const buffer = await toArray(stream).then(function (parts) {
+					const buffers = parts.map(part => Buffer.isBuffer(part) ? part : Buffer.from(part));
+					return Buffer.concat(buffers);
+				})
+
+				form.append('image', buffer, {
+					contentType: stream.contentType,
+					filename: stream.filename,
+					name: 'image',
+				});
+			}
+
+			console.log('sending notification to', address);
+
+			let response = await fetch(address, {
+				method: 'POST',
+				body: form,
+				headers: { 
+					...form.getHeaders() 
+				}
+			});
+
+			let responseText = await response.text();
+			console.log(`response = ${responseText}`)
+
+			return response.ok;
+
+		} catch(e) {
+			console.error(e);
+			return false;
+		}
+	}
 }
 
 module.exports = PiPupApp;
