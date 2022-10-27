@@ -1,0 +1,28 @@
+{
+  "name": "com.roco.pipup",
+  "version": "1.1.0",
+  "description": "PiPup app for Homey",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Rocodamelshe/com.roco.pipup/tree/beta.git"
+  },
+  "author": "Rocodamelshe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rocodamelshe/com.roco.pipup/tree/beta/issues"
+  },
+  "homepage": "https://github.com/Rocodamelshe/com.roco.pipup/tree/beta#readme",
+  "dependencies": {
+    "form-data": "^3.0.1",
+    "node-fetch": "2.6.7",
+    "stream": "^0.0.2",
+    "stream-to-array": "^2.3.0"
+  },
+  "devDependencies": {
+    "homey": "^2.0.6"
+  },
+  "engines": {
+    "node": ">=12.16.1"
+  }
+}
