@@ -16,26 +16,21 @@ class PiPupApp extends Homey.App {
 
 		// json
 
-		new Homey.FlowCardAction('send_notification')
-			.register()
+		this.homey.flow.getActionCard('send_notification')
 			.registerRunListener(this._onFlowActionSendNotificationJson);
 
-		new Homey.FlowCardAction('send_notification_media_image')
-			.register()
+		this.homey.flow.getActionCard('send_notification_media_image')
 			.registerRunListener(this._onFlowActionSendNotificationJson);
 
-		new Homey.FlowCardAction('send_notification_media_video')
-			.register()
+		this.homey.flow.getActionCard('send_notification_media_video')
 			.registerRunListener(this._onFlowActionSendNotificationJson);
 
-		new Homey.FlowCardAction('send_notification_media_web')
-			.register()
+		this.homey.flow.getActionCard('send_notification_media_web')
 			.registerRunListener(this._onFlowActionSendNotificationJson);
 
 		// multipart
 
-		new Homey.FlowCardAction('send_notification_image')
-			.register()
+		this.homey.flow.getActionCard('send_notification_image')
 			.registerRunListener(this._onFlowActionSendNotificationMultipart);			
 	}
 
